@@ -11,7 +11,7 @@ import (
 )
 
 //CreateSecret create secret with default option and region
-func CreateSecret(name, Description, SecretString string) {
+func CreateSecret(name, SecretString, Description string) {
 
 	svc := secretsmanager.NewFromConfig(*Cfg)
 

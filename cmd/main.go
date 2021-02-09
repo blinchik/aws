@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	sc "github.com/blinchik/aws/secretmanager"
+	sc "github.com/blinchik/aws/services/secretmanager"
 )
 
 func main() {
