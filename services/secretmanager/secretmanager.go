@@ -11,12 +11,12 @@ import (
 )
 
 //CreateSecret create secret with default option and region
-func CreateSecret(name, SecretString, Description string) {
+func CreateSecret(name, SecretString, Description string, cfg *aws.Config, region string) {
 
-	svc := secretsmanager.NewFromConfig(*Cfg)
+	svc := secretsmanager.NewFromConfig(*cfg)
 
 	opts := func(o *secretsmanager.Options) {
-		o.Region = Region
+		o.Region = region
 	}
 
 	input := &secretsmanager.CreateSecretInput{
@@ -42,12 +42,12 @@ func CreateSecret(name, SecretString, Description string) {
 }
 
 //GetSecret get secret with the given name and default AWSCURRENT
-func GetSecret(secret string) string {
+func GetSecret(secret string, cfg *aws.Config, region string) string {
 
-	svc := secretsmanager.NewFromConfig(*Cfg)
+	svc := secretsmanager.NewFromConfig(*cfg)
 
 	opts := func(o *secretsmanager.Options) {
-		o.Region = Region
+		o.Region = region
 	}
 
 	input := &secretsmanager.GetSecretValueInput{
@@ -73,12 +73,12 @@ func GetSecret(secret string) string {
 }
 
 //DeleteSecret delete secret with given name. (force delete without recovery)
-func DeleteSecret(secret string) {
+func DeleteSecret(secret string, cfg *aws.Config, region string) {
 
-	svc := secretsmanager.NewFromConfig(*Cfg)
+	svc := secretsmanager.NewFromConfig(*cfg)
 
 	opts := func(o *secretsmanager.Options) {
-		o.Region = Region
+		o.Region = region
 	}
 
 	input := &secretsmanager.DeleteSecretInput{

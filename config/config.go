@@ -1,4 +1,4 @@
-package secretmanager
+package config
 
 import (
 	"context"
@@ -26,14 +26,4 @@ func CreateConfigFromEC2Role() (*aws.Config, string) {
 
 	return &cfg, region.Region
 
-}
-
-//Cfg default config
-var Cfg *aws.Config
-
-//Region defualt aws region
-var Region string
-
-func init() {
-	Cfg, Region = CreateConfigFromEC2Role()
 }
